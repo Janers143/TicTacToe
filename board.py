@@ -8,13 +8,19 @@ class Board:
     nb_rows : int -
         The number of rows and columns of the board (can be 3, 4, ...)
 
-    board: matrix -
+    board : matrix -
         The actual board with the plays by every player
 
     Methods
     -------
-    says(sound=None)
-        Prints the animals name and what sound it makes
+    getWinner()
+        Gets the winner (if there is one) of the current board
+
+    getMoves()
+        Gets the moves from each of the players
+
+    isComplete()
+        Tells if the board is complete (i.e. there's no more empty squares)
     """
 
     def __init__(self, rows = 0, play_x = [], play_o = []):

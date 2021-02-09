@@ -1,6 +1,8 @@
 import board
+import game
 
 if __name__=="__main__":
 
-    b1 = board.Board(3, [(0,0)], [(2,1)])
-    print(b1)
+    g = game.Game()
+    move = g.get_move_text('X')
+    print("The move received is: " + str(move))
