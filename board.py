@@ -103,8 +103,78 @@ class Board:
             res = 'O'
         return res
 
+    def getMoves(self):
+        '''
+        Gets the moves from each of the players
+
+        Parameters
+        ----------
+        None
+
+        Returns
+        -------
+        A tuple with an array with x player's moves and an array with o player's move
+        '''
+        x_moves = []
+        o_moves = []
+        for i in range(self.nb_rows):
+            for j in range(self.nb_rows):
+                if (self.board[i][j] == 'X'):
+                    x_moves.append((i,j))
+                elif (self.board[i][j] == 'O'):
+                    o_moves.append((i,j))
+        return (x_moves, o_moves)
+
+    def isComplete(self):
+        '''
+        Tells if the board is complete (i.e. there's no more empty squares)
+        
+        Parameters
+        ----------
+        None
+
+        Returns
+        -------
+        A boolean value telling whether the board is complete or not
+        '''
+        complete = True
+        for line in self.board:
+            for square in line:
+                if square == None:
+                    complete = False
+        return complete
+
     def __str__(self):
-        return str(self.board)
+        '''
+        Gives a string representing the board (useful for not using pygame)
+        
+        Parameters
+        ----------
+        None
+
+        Returns
+        -------
+        A string representing the board
+        '''
+        res = ""
+        for i, line in enumerate(self.board):
+            for j, square in enumerate(line):
+                if (square == None):
+                    res += '   '
+                else:
+                    res += ' ' + square + ' '
+                
+                if j < self.nb_rows - 1:
+                    res += '|'
+                else:
+                    res += '\n'
+            
+            if i < self.nb_rows - 1:
+                for _ in range(self.nb_rows*4 - 1):
+                    res += '-'
+                res += '\n'
+
+        return res
 
     def __repr__(self):
         return self.__str__()

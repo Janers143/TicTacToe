@@ -85,5 +85,26 @@ class TestBoard(unittest.TestCase):
         res = b.getWinner()
         self.assertEqual(res, 'X')
 
+    def test_getMoves(self):
+        b = board.Board(4, [(0,3), (1,2), (2,1), (3,0)], [(0,0), (0,2), (2,2)])
+        res = b.getMoves()
+        self.assertEqual(res, ([(0,3), (1,2), (2,1), (3,0)], [(0,0), (0,2), (2,2)]))
+
+    def test_isComplete1(self):
+        b = board.Board(3, [(1,1), (0,1), (1,0), (2,0), (2,2)], [(0,0), (0,2), (1,2), (2,1)])
+        res = b.isComplete()
+        self.assertTrue(res)
+
+    def test_isComplete2(self):
+        b = board.Board(4, [(0,3), (1,2), (2,1), (3,0)], [(0,0), (0,2), (2,2)])
+        res = b.isComplete()
+        self.assertFalse(res)
+
+    def test_representation(self):
+        b = board.Board(3, [(0,0)], [(2,1)])
+        res = str(b)
+        expected = " X |   |   \n-----------\n   |   |   \n-----------\n   | O |   \n"
+        self.assertEqual(res, expected)
+
 if __name__ == "__main__":
     unittest.main()
