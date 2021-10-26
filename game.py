@@ -1,4 +1,4 @@
-import board
+from board import Board
 
 class Game:
 
@@ -33,10 +33,23 @@ class Game:
         '''
         super().__init__()
 
-        self.board = board.Board(board_size, [], [])
+        self.board = Board(board_size, [], [])
         self.moves = []
 
     def get_move_text(self, player):
+        '''
+        Gets the next move from the player from the console input
+
+        Parameters
+        ----------
+        player : char -
+            The player that has to move ('X' or 'O')
+
+        Returns
+        -------
+        A tuple with the move entered by the player
+        '''
+
         print("Player " + player + " turn to move...")
         
         line = input("Enter the line you want to play (and press Enter) : ")
